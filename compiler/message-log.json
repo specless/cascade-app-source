@@ -1,0 +1,172 @@
+[
+  {
+    "message": "Command Received: Clean Output Directory",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Project cleaned up successfully.",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Command Completed: Clean Output Directory",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Command Received: Open Project",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project opened successfully.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Command Completed: Open Project",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Command Received: Compile HTML",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "HTML Compiled successfully.",
+    "code": 4,
+    "details": null
+  },
+  {
+    "message": "Command Completed: Compile HTML",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Command Received: Compile CSS",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Project settings updated.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "CSS Compiled successfully.",
+    "code": 4,
+    "details": null
+  },
+  {
+    "message": "Command Completed: Compile CSS",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Command Received: Compile Javascript",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Javascript Compiled successfully.",
+    "code": 4,
+    "details": null
+  },
+  {
+    "message": "Command Completed: Compile Javascript",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Project built successfully.",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Command Completed: Build Project",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Command Received: Start Server and Listen for Changes",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Command Received: Start Cascade Compiler",
+    "code": 1,
+    "details": null
+  },
+  {
+    "message": "Server: Listening On Port: 8787",
+    "code": 2,
+    "details": null
+  },
+  {
+    "message": "Server: New Sockets Connection",
+    "code": 2,
+    "details": null
+  }
+]
