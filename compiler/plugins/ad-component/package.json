@@ -1,0 +1,28 @@
+{
+    "name": "ad-component",
+    "version": "1.0.0",
+    "specless-cascade-plugin": {
+        "triggers": [
+        	{
+                "name": "component",
+                "type": "element",
+                "tag": "div",
+                "transformScript": "transform.js",
+                "dependencies": {
+                    "css": ["styles.css"],
+                    "js": []
+                },
+                "psuedoElements": [
+                    {
+                        "name": "close-button",
+                        "selector": ".vjs-big-play-button"
+                    },
+                    {
+                        "name": "loading-icon",
+                        "selector": ".vjs-control-bar"
+                    }
+                ]
+            }
+        ]
+    }
+}

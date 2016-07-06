@@ -1,0 +1,99 @@
+@import 'global-styles';
+
+$myvar: 100px;
+
+@flowlane    90   {
+    .whatever {
+        this: that;
+        @breakpoint (min: 80) {
+            this: this;
+        }
+    }
+}
+
+[data-whatever="this"] {
+    face: off;
+}
+
+.whatever {
+    @flowlane (80) {
+        this: that;
+        background-image: url(/assets/myimage.png#mySprite);
+
+        @breakpoint 90 {
+            something: that;
+        }
+    }
+}
+
+@breakpoint (88) {
+    .whatever {
+        this: that;
+        background-image: url(/assets/image.png#mySprite);
+    }
+}
+
+
+@define-flowlane 90 {
+    min-width: 800;
+    max-width: 900;
+    min-scale: 0.5;
+    max-scale: 3;
+}
+
+@define-flowlane (80)  {
+    min-width: 800;
+    max-width: 900;
+    min-scale: 0.5;
+    max-scale: 3;
+}
+
+
+.phone {
+    &_title {
+        width: 500px;
+        @media (max-width: 500px) {
+            width: auto;
+        }
+        body.is_dark & {
+            color: white;
+        }
+    }
+    img {
+        display: block;
+
+        [data-test] {
+            display: none;
+
+            [data-another] {
+                display: whatever;
+            }
+        }
+
+        @time (year is whatever) {
+            whatever: whatever;
+        }
+
+        @time (year == 2016) and (month > 4) and (month < 8), (month == 'january') {
+            display: this;
+
+            @device (type: 'tablet') {
+                display: that;
+
+                @flowlane 80 {
+                    whatever: whatever;
+                }
+            }
+
+            @environment {
+                whatever: whatever;
+            }
+        }
+
+        @layout (300x250/800x900/[728-970]x90) {
+            .test {
+                whatever: whatever;
+            }
+        }
+    }
+}
