@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="console">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link href="./stylesheets/main.css" rel="stylesheet" type="text/css">
+    <script src="vendor/jquery.js"></script>
+    <script src="node_modules/json-formatter-js/dist/bundle.js"></script>
+</head>
+<body class="console">
+	<div class="console-menu">
+		<div id="projectLogButton" class="project-log-tab label label-small console-tab">Project Log</div>
+		<div id="projectDetailsButton" class="project-details-tab label label-small console-tab">Project Details</div>
+	</div>
+	<div id="log" class="log-container compiler-messages compiler-success compiler-errors">
+	</div>
+	<div id="project-info" class="project-info-container"></div>
+	<div id="controls" class="log-controls">
+		<div class="control-item">
+			<input type="checkbox" name="compiler-messages" checked>Compiler Messages
+		</div>
+		<div class="control-item">
+			<input type="checkbox" name="compiler-success" checked>Compiler Success
+		</div>
+		<div class="control-item">
+			<input type="checkbox" name="compiler-errors" checked>Compiler Errors
+		</div>
+		<div class="control-item">
+			<input type="checkbox" name="app-messages">Application Messages
+		</div>
+		<div class="control-item">
+			<input type="checkbox" name="app-errors">Application Errors
+		</div>
+		<div class="control-item">
+			<input type="checkbox" name="gulp-console">Gulp Console
+		</div>
+	</div>
+	<div class="app-window-bar">
+        <div id="windowClose" class="window-bar-close"></div>
+        <div id="windowMinimize" class="window-bar-minimize"></div>
+    </div>
+    <script>
+    var $log = $("#log");
+    $(".control-item input").click(function(event) {
+    	var name = $(this).attr("name");
+    	if (this.checked) {
+    		$log.addClass(name);
+    	} else {
+    		$log.removeClass(name);
+    	}
+    });
+    $("#projectLogButton").click(function() {
+    	$('body').removeClass('project-info');
+    });
+    $("#projectDetailsButton").click(function() {
+    	$('body').addClass('project-info');
+    });
+    </script>
+</body>
+</head>
