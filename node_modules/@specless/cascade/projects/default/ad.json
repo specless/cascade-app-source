@@ -1,0 +1,122 @@
+{
+  "path": "/Users/scorby/Dev/specless-cascade/projects/default",
+  "name": "default",
+  "cascadeVersion": "1.0.0",
+  "lastUpdated": "2016:04:16:11:03:55",
+  "csfVersion": 623,
+  "components": [
+    {
+      "name": "banner",
+      "html": {},
+      "css": {
+        "contexts": {
+          "time-year": [
+            "2016"
+          ],
+          "min-time-month": [
+            "4"
+          ],
+          "max-time-month": [
+            "8"
+          ],
+          "time-month": [
+            "january"
+          ],
+          "device-type": [
+            "tablet"
+          ],
+          "ad-width": [
+            "300",
+            "800"
+          ],
+          "ad-height": [
+            "250",
+            "900",
+            "90"
+          ],
+          "min-ad-width": [
+            "728"
+          ],
+          "max-ad-width": [
+            "970"
+          ]
+        },
+        "layouts": [
+          {
+            "w": "300",
+            "h": "250"
+          },
+          {
+            "w": "800",
+            "h": "900"
+          },
+          {
+            "w": [
+              "728",
+              "970"
+            ],
+            "h": "90"
+          }
+        ],
+        "flowlanes": {
+          "80": {
+            "breakpoints": [
+              {
+                "type": "min",
+                "value": "80"
+              },
+              {
+                "type": "max",
+                "value": "90"
+              }
+            ],
+            "min-width": "800",
+            "max-width": "900",
+            "min-scale": "0.5",
+            "max-scale": "3"
+          },
+          "90": {
+            "breakpoints": [
+              {
+                "type": "min",
+                "value": "80"
+              },
+              {
+                "type": "max",
+                "value": "90"
+              }
+            ],
+            "min-width": "800",
+            "max-width": "900",
+            "min-scale": "0.5",
+            "max-scale": "3"
+          }
+        }
+      },
+      "js": {},
+      "assets": {}
+    },
+    {
+      "name": "loader",
+      "html": {},
+      "css": {
+        "contexts": {},
+        "layouts": [],
+        "flowlanes": {}
+      },
+      "js": {},
+      "assets": {}
+    },
+    {
+      "name": "panel",
+      "html": {},
+      "css": {
+        "contexts": {},
+        "layouts": [],
+        "flowlanes": {}
+      },
+      "js": {},
+      "assets": {}
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "name": "@specless/cascade",
+  "version": "1.0.0",
+  "description": "Compiles Specless Cascade html5 responsive rich media ads.",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/specless/specless-cascade.git"
+  },
+  "keywords": [
+    "advertising",
+    "rich",
+    "media",
+    "ads"
+  ],
+  "author": "Stephen Corby",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/specless/specless-cascade/issues"
+  },
+  "homepage": "https://github.com/specless/specless-cascade#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "colors": "^1.1.2",
+    "directory-tree": "^0.1.1",
+    "fs-jetpack": "^0.8.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.0",
+    "gulp-prompt": "^0.2.0",
+    "gulp-rename": "^1.2.2",
+    "postcss-animation": "0.0.6",
+    "postcss-aspect-ratio": "^1.0.0",
+    "postcss-assets": "^4.0.1",
+    "postcss-atroot": "^0.1.3",
+    "postcss-calc": "^5.2.0",
+    "postcss-color-function": "^2.0.1",
+    "postcss-conditionals": "^2.0.2",
+    "postcss-custom-selectors": "^3.0.0",
+    "postcss-each": "^0.9.1",
+    "postcss-easings": "^0.3.0",
+    "postcss-easysprites": "^0.1.3",
+    "postcss-filter-gradient": "^0.2.4",
+    "postcss-for": "^2.0.1",
+    "postcss-functions": "^2.1.0",
+    "postcss-import": "^8.1.0",
+    "postcss-nested": "^1.0.0",
+    "postcss-reporter": "^1.3.3",
+    "postcss-sassy-mixins": "^2.0.0",
+    "postcss-simple-extend": "^1.0.0",
+    "postcss-simple-vars": "^1.2.0",
+    "q": "^1.4.1",
+    "run-sequence": "^1.1.5",
+    "underscore": "^1.8.3",
+    "yargs": "^4.4.0"
+  },
+  "specless-cascade": {
+    "csfVersion": 623,
+    "path": "/Users/scorby/Dev/specless-cascade",
+    "serverPort": 8787,
+    "autoReload": {
+      "all": true,
+      "html": true,
+      "css": true,
+      "js": true,
+      "assets": true
+    },
+    "userPluginsFolder": null,
+    "currentProjectDir": "/Users/scorby/Dev/defaultCascadeProjectTest copy",
+    "buildDir": ".output",
+    "preview": "",
+    "publishDir": "./publish",
+    "publishCompiledDirName": ".output",
+    "projectTemplateDir": "/projects/templates",
+    "macIconPath": "/project-folder.icns",
+    "baseTemplateDir": "/projects/templates/base",
+    "defaultProjectDir": "/projects/default",
+    "errorProjectDir": "/projects/error",
+    "settingsFileName": "ad.json",
+    "assetsDirName": "assets",
+    "supportedAssets": [
+      "png",
+      "jpg",
+      "jpeg",
+      "gif",
+      "webp",
+      "tif",
+      "tiff",
+      "bmp",
+      "svg",
+      "mp4",
+      "ogg",
+      "wav",
+      "mp3",
+      "jsv",
+      "js",
+      "html",
+      "css",
+      "json",
+      "xsl",
+      "xslx",
+      "csv",
+      "pdf"
+    ],
+    "componentDirNamePrefix": "",
+    "css": {
+      "fileName": "index.css",
+      "pluginsDir": "./plugins/css",
+      "globalFileName": "global-styles.css",
+      "syntax": {
+        "contexts": [
+          "time",
+          "environment",
+          "location",
+          "user",
+          "input",
+          "device",
+          "site",
+          "format",
+          "ad",
+          "layout",
+          "custom"
+        ],
+        "contextOperators": [
+          ":",
+          ">",
+          "<",
+          "=="
+        ],
+        "attrPrefix": "[data-",
+        "attrJoiner": "~='",
+        "attrExplicitJoiner": "='",
+        "attrEnding": "']",
+        "flowlane": "flowlane",
+        "flowlaneProperties": [
+          "min-width",
+          "max-width",
+          "min-scale",
+          "max-scale"
+        ],
+        "flowlaneDefaults": {
+          "breakpoints": [],
+          "min-width": 0,
+          "max-width": 10000,
+          "min-scale": 0,
+          "max-scale": 1000
+        },
+        "flowlaneDefine": "define-flowlane",
+        "breakpoint": "breakpoint",
+        "defaultBreakpointType": "max"
+      }
+    },
+    "html": {
+      "fileName": "index.html",
+      "plugins": "./plugins/html",
+      "templateFilePath": "./templates/component.html",
+      "syntax": {
+        "elementPrefix": "ad-",
+        "attributeFinalPrefix": "data-"
+      }
+    },
+    "js": {
+      "fileName": "index.js",
+      "plugins": "./plugins/js",
+      "templateFilePath": "./templates/component.js",
+      "whiteListedDeps": [
+        {
+          "name": "videojs",
+          "url": "https://vjs.zencdn.net/5.2.4/video.js"
+        },
+        {
+          "name": "jquery",
+          "url": "https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
+        },
+        {
+          "name": "greensock-tweenlite",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenLite.min.js"
+        },
+        {
+          "name": "greensock-tweenmax",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"
+        },
+        {
+          "name": "greensock-cssplugin",
+          "url": "http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/CSSPlugin.min.js"
+        },
+        {
+          "name": "greensock-easepack",
+          "url": "http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/easing/EasePack.min.js"
+        },
+        {
+          "name": "greensock-timelinelite",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineLite.min.js"
+        },
+        {
+          "name": "greensock-timelinemax",
+          "url": "https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TimelineMax.min.js"
+        },
+        {
+          "name": "createjs",
+          "url": "https://code.createjs.com/createjs-2015.11.26.min.js"
+        }
+      ],
+      "syntax": {
+        "adObject": "ad"
+      }
+    }
+  }
+}
