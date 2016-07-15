@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Comment Test 2 -->
+
+    <link href="./stylesheets/main.css" rel="stylesheet" type="text/css">
+
+    <!-- Scripts giving you few extra things in NW.js -->
+    <script src="vendor/nw-boilerplate/window_state.js"></script>
+    <script src="vendor/nw-boilerplate/context_menu.js"></script>
+    <script src="vendor/nw-boilerplate/external_links.js"></script>
+    <script src="vendor/nw-boilerplate/dev_helper.js"></script>
+    <script src="vendor/nw-boilerplate/env_config.js"></script>
+    <script>
+        (function () {
+            var gui = require('nw.gui');
+            var win = gui.Window.get();
+
+            // Create default menu items for OSX
+            if (process.platform === 'darwin') {
+                var mb = new gui.Menu({ type: "menubar" });
+                mb.createMacBuiltin(gui.App.manifest.productName);
+                win.menu = mb;
+            }
+        }());
+    </script>
+    <script src="vendor/jquery.js"></script>
+    <script src="vendor/jquery.dotdotdot.js"></script>
+
+    <!-- Load real app code -->
+    <script src="vendor/require.js"></script>
+    <script>
+        requirejs(['app'], function (app) {});
+    </script>
+</head>
+<body>
+
+
+    <div id="app" class="app-wrapper">
+
+        <!-- Left Off Screen Menu -->
+        <div class="app-settings">
+            <div class="menu-top">
+                <div class="label label-small">Settings</div>
+            </div>
+            <div class="menu-spacer"></div>
+            <div class="menu-middle">
+                <div class="menu-item framework-settings">
+                    <div class="label label-small">Cascade Framework</div>
+                    <div class="body body-small current-version">Current Version: <span class="body body-small body-bold" id="cascadeVersion"></span></div>
+                    <!-- <div id="update-cascade" class="button button-small">Get Latest Version</div> -->
+                </div>
+                <div class="menu-spacer"></div>
+                <div class="menu-item server-settings">
+                    <div class="label label-small">Local Server Port</div>
+                    <input class="settings-input-text" id="serverPort" type="text" value=""/>
+                </div>
+                <div class="menu-spacer"></div>
+                <div id="plugins-settings" class="menu-item plugins-settings disabled">
+                    <div class="label label-small">Custom Compiler</div>
+                    <div id="cascadePath" class="body body-small custom-plugins"></div>
+                    <div class="menu-item-group">
+                        <div id="toggleCustomCascade" data-value="false" class="button button-small">Enable</div>
+                        <div id="chooseCascade" class="button button-small">Choose</div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-bottom">
+                <div id="restartServer" class="button button-small">Save & Restart Cascade</div>
+            </div>
+        </div>
+
+
+        <!-- Right Off Screen Menu -->
+        <div class="app-launch">
+            <div class="menu-top">
+                <div class="label label-small">Preview in Browser</div>
+            </div>
+            <div class="menu-spacer"></div>
+            <div class="menu-middle">
+                 <div class="menu-item menu-item-horizontal">
+                    <i id="open-in-chrome" class="icon-chrome app-preview" data-target="google chrome"></i>
+                    <i id="open-in-safari" class="icon-safari app-preview" data-target="safari"></i>
+                    <i id="open-in-firefox" class="icon-firefox app-preview" data-target="firefox"></i>
+                    <i id="open-in-opera" class="icon-opera app-preview" data-target="opera"></i>
+                 </div>
+                 <div class="menu-spacer"></div>
+                 <div class="menu-item menu-item-horizontal label label-small" style="color:white;">Open In Text Editor</div>
+                 <div class="menu-spacer"></div>
+                 <div class="menu-item menu-item-horizontal">
+                    <i id="open-in-sublime" class="icon-sublime app-open-in" data-target="sublime text"></i>
+                    <i id="open-in-atom" class="icon-atom app-open-in" data-target="atom"></i>
+                    <i id="open-in-brackets" class="icon-brackets app-open-in" data-target="brackets"></i>
+                 </div>
+                 <div class="menu-spacer"></div>
+            </div>
+            <div class="menu-bottom">
+                <!-- <div id="show-console" class="button button-outline button-small">Show Console Readout</div> -->
+            </div>
+        </div>
+
+
+        <!-- Main Application Content -->
+        <div class="app-main">
+
+            <!-- Top Icons -->
+            <div class="main-top">
+                <div id="toggleLeftMenu" class="main-top-icon left">
+                    <i class="icon-settings"></i>
+                </div>
+                <div id="logo-button" class="main-top-header">
+                    <img class="main-top-logo" src="assets/images/cascade-outline-logo.png"/>
+                    <div class="loading-icon">
+                        <div class="spinner">
+                          <div class="bounce1"></div>
+                          <div class="bounce2"></div>
+                          <div class="bounce3"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="toggleRightMenu" class="main-top-icon right">
+                    <i class="icon-launch"></i>
+                </div>
+            </div>
+
+
+            <!-- Middle Content -->
+            <div class="main-middle">
+
+                <!-- Project Card -->
+                <div id="projectCard" class="project-card default-project">
+                    <div class="project-card-error">
+                        <i class="icon-left icon-cross-circle"></i>
+                        <span id="errorTagMessage" class="message label label-small">Compile Error</span>
+                        <span id="errorTag" class="retry label label-small">Retry</span>
+                        <i class="icon-right icon-sync"></i>
+                        <span id="errorTagDetails" class="details"></span>
+                    </div>
+                    <div id="projectLabel" class="project-card-label label label-small">No Project Currently Open</div>
+                    <div id="projectTitle" class="project-card-title heading"></div>
+                    <div id="projectPath" class="project-card-path body body-small body-italic">Please open or create a new project below.</div>
+                    <!-- <div id="project-extra-content" class="project-content-area">
+                        <div id="project-content-wrapper" class="project-content-wrapper">
+                            
+                        </div>
+                    </div>
+                    <i id="project-details-closer" class="project-details-closer icon-close"></i> -->
+                    <div class="project-card-menu">
+                        <div id="projectInfo" class="project-card-menu-item">
+                            <i class="icon-info-circle"></i>
+                        </div>
+                        <div id="projectFolder" class="project-card-menu-item app-open-in">
+                            <i class="icon-folder"></i>
+                        </div>
+                        <div id="projectPreview" class="project-card-menu-item app-preview">
+                            <i class="icon-eye"></i>
+                        </div>
+                        <div id="publishProject" class="project-card-menu-item">
+                            <i class="icon-publish-plane"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Buttons -->
+            <div class="main-bottom">
+                <div id="openProject" class="button button-outline white">Open Project</div>
+                <div id="newProject" class="button button-outline white">New Project</div>
+            </div>
+
+            <!-- App Download Progress Overlay -->
+            <div id="downloadOverlay" class="download-overlay">
+                <div id="downloadBar" class="download-bar"></div>
+                <div id="downloadMessage" class="download-message label label-small">Downloading Update...</div>
+                <div class="update-complete label label-small">Update Ready. Click to Restart.</div>
+            </div>
+
+            <!-- Click Overlay (For collapsing side menus) -->
+            <div id="clickOverlay" class="click-overlay"></div>
+        </div>
+
+
+        <!-- App Splash Screen -->
+        <div class="app-splash-screen">
+            <img class="splash-screen-logo" src="assets/images/cascade-outline-logo.png"/>
+            <img class="splash-screen-title" src="assets/images/cascade-title.png"/>
+            <img class="splash-screen-specless" src="assets/images/specless-logo.png"/>
+        </div>
+
+        <!-- App Alert -->
+        <div class="app-alert">
+            <!-- <div id="alert" class="alert-dialog">
+                <div id="alert-card" class="project-card">
+                    <div class="project-card-icon">
+                        <i id="alert-icon" class="icon-warning"></i>
+                    </div>
+                    <div id="alert-name" class="project-card-label label label-small"></div>
+                    <div id="alert-description" class="project-card-path body body-small body-italic"></div>
+                    <div id="project-extra-content" class="project-content-area">
+                        <div id="alert-content-wrapper" class="project-content-wrapper">
+                            
+                        </div>
+                    </div>
+                    <i id="alert-details-closer" class="project-details-closer icon-close"></i>
+                    <div class="project-card-menu">
+                        <div id="alert-button-one" class="button button-outline hide"></div>
+                        <div id="alert-button-two" class="button button-outline"></div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- Window Controls and Popover Arrow -->
+    <div class="app-window-bar">
+        <div id="windowClose" class="window-bar-close"></div>
+        <div id="windowMinimize" class="window-bar-minimize"></div>
+        <div class="app-arrow"></div>
+    </div>
+
+    <div class="app-hidden">
+        <input id="openDirectory" type="file" nwdirectory/>
+        <input id="newDirectory" type="file" nwsaveas/>
+        <input id="chooseFile" type="file" accept=".scc"/>
+    </div>
+
+</body>
+</html>

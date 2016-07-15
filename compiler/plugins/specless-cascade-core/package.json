@@ -1,0 +1,83 @@
+{
+    "name": "specless-cascade-core",
+    "version": "1.0.0",
+    "specless-cascade-plugin": {
+        "triggers": [
+            {
+                "name": "component",
+                "type": "element",
+                "tag": "div",
+                "dependencies": {
+                    "css": [
+                        "css/ad-component.css"
+                    ],
+                    "jsPlugins": [],
+                    "js": []
+                },
+                "psuedoElements": [
+                    {
+                        "name": "close-button",
+                        "selector": "[data-element='close-button']"
+                    }
+                ],
+                "psuedoStates": [
+                    {
+                        "name": "playing",
+                        "selector": ".hovering"
+                    }
+                ],
+                "properties": [
+                    {
+                        "name": "close-button",
+                        "mixinName": "ad-component-close-button"
+                    }
+                ]
+            },
+            {
+                "name": "exit",
+                "type": "attribute",
+                "newName": "exit"
+            },
+            {
+                "name": "count",
+                "type": "attribute",
+                "newName": "counter"
+            },
+            {
+                "name": "expand",
+                "type": "attribute",
+                "newName": "expander"
+            },
+            {
+                "name": "close",
+                "type": "attribute",
+                "newName": "closer"
+            },
+            {
+                "name": "third-party-track",
+                "type": "attribute",
+                "newName": "third-party-track"
+            },
+            {
+                "name": "script",
+                "type": "element",
+                "transformScript": "transform-scripts/ad-script-transform.js"
+            },
+            {
+                "name": "data",
+                "type": "element",
+                "transformScript": "transform-scripts/ad-data-transform.js"
+            },
+            {
+                "name": "close-button",
+                "type": "element",
+                "transformScript": "transform-scripts/ad-close-button-transform.js",
+                "dependencies": {
+                    "css": [
+                        "css/ad-close-button.css"
+                    ]
+                }
+            }
+        ]
+    }
+}

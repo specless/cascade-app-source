@@ -1,0 +1,186 @@
+/* <ad-video> */
+
+@mixin ad-video-control-bar-color($color) {
+	::-ad-video-control-bar {
+		background-color: $color;
+	}
+}
+
+_ad-video.video-js {
+	overflow: hidden;
+	background-color: #000000;
+	min-width: 50px;
+	min-height: 50px;
+	position: absolute;
+	width: 320rem;
+	height: 180rem;
+	background-color: #000000;
+	display: inline-block;
+	-ad-video-control-bar-color : rgba(13, 10, 10, 0.3);
+
+	video {
+		background-color: transparent;
+	}
+
+	::-ad-video-volume-control {
+		.vjs-menu {
+			display: none !important;
+		}
+
+		&:hover {
+			width: 4em !important;
+		}
+	}
+
+	.vjs-mouse-display {
+		font-family: sans-serif;
+	}
+
+	::-ad-video-play-progress::after {
+		font-family: sans-serif;
+	}
+
+	@device (type: 'smartphone'), (type: 'tablet') {
+		font-size: 12px;
+
+		::-ad-video-remaining-time {
+			display: none;
+		}
+	}
+
+	.vjs-tech {
+		animation: nodeInserted 0.001s ease 1;
+	}
+
+	.vjs-tech-inline-canvas {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	}
+
+	&.vjs-fullscreen, &:-webkit-full-screen {
+	    top: 0 !important;
+	    left: 0 !important;
+	    position: fixed !important;
+	}
+
+	.vjs-iframe-blocker {
+		display: block;
+	}
+
+	&.vjs-inline-player.vjs-seeking .vjs-loading-spinner {
+		display: none;
+	}
+
+	::-ad-video-big-play-button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		font-size: 4em;
+		width: 2em;
+		max-width: 33%;
+		height: auto;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+		background-image: url('data:image/svg+xml;utf8,<svg version="1.1" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 200" xml:space="preserve"><polygon fill="#FFFFFF" points="22,200 22,0 179.8,100 "/></svg>');
+		background-position: 72% center;
+		background-size: 70%;
+		background-repeat: no-repeat;
+
+		&:before {
+			display: block;
+			content: "";
+			width: 100%;
+			padding-top: 100%;
+			position: relative;
+		}
+
+		&:after {
+			content: "";
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 32px;
+		}
+	}
+
+	::-ad-video-progress-bar {
+		background-color: rgba(255, 255, 255, 0.2);
+	}
+
+	::-ad-video-load-progress {
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+
+	&:-ad-video-simple-controls {
+		font-size: 12px;
+
+		.vjs-big-play-button {
+			background-size: 100%;
+			background-position: center center;
+			background-color: transparent;
+			border-radius: 0;
+			border: none;
+		}
+
+		::-ad-video-control-bar {
+			background-color: transparent;
+		}
+
+		.vjs-control {
+			display: none;
+			text-shadow: 0 0 3px rgba(0,0,0,0.25);
+
+			&:hover {
+				text-shadow: 0 0 6px rgba(0,0,0,0.15);
+			}
+		}
+
+		::-ad-video-play-control, ::-ad-video-volume-control {
+			display: flex;
+		}
+
+		::-ad-video-restart-control {
+			display: flex;
+			align-self: flex-end;
+		}
+
+		::-ad-video-volume-control {
+			position: absolute;
+			right: 0;
+		}
+	}
+}
+
+[data-device-type~='smartphone'] [data-element='video'].video-js, [data-device-type~='tablet'] [data-element='video'].video-js {
+	font-size: 12px;
+}
+
+[data-device-type~='smartphone'] [data-element='video'].video-js .vjs-remaining-time, [data-device-type~='tablet'] [data-element='video'].video-js .vjs-remaining-time {
+	display: none;
+}
+
+[data-device-type~='smartphone'] [data-element='video'].video-js .vjs-restart-button {
+	display: none;
+}
+
+[data-element='video'].video-js .vjs-tech {
+	-webkit-animation: nodeInserted 0.001s ease 1;
+	        animation: nodeInserted 0.001s ease 1;
+}
+
+[data-element='video'].video-js .vjs-tech-inline-canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+[data-element='video'].video-js.vjs-inline-player.vjs-seeking .vjs-loading-spinner {
+	display: none;
+}

@@ -1,0 +1,3 @@
+@mixin ad-component-close-button($color) {
+	background-color: $color;
+}
