@@ -1,0 +1,194 @@
+{
+    "name": "ad-video",
+    "version": "1.0.0",
+    "specless-cascade-plugin": {
+        "triggers": [
+        	{
+                "name": "video",
+                "type": "element",
+                "tag": "video",
+                "transformScript": "transform.js",
+                "dependencies": {
+                    "css": ["styles-cascade.css", "styles.css"],
+                    "js": ["videojs", "ad-video-tracking", "ad-video"]
+                },
+                "psuedoElements": [
+                    {
+                        "name": "big-play-button",
+                        "selector": ".vjs-big-play-button"
+                    },
+                    {
+                        "name": "control-bar",
+                        "selector": ".vjs-control-bar"
+                    },
+                    {
+                        "name": "time-display",
+                        "selector": ".vjs-remaining-time"
+                    },
+                    {
+                        "name": "loading-spinner",
+                        "selector": ".vjs-loading-spinner"
+                    },
+                    {
+                        "name": "poster",
+                        "selector": ".vjs-poster"
+                    },
+                    {
+                        "name": "play-control",
+                        "selector": ".vjs-play-control"
+                    },
+                    {
+                        "name": "mute-control",
+                        "selector": ".vjs-mute-control"
+                    },
+                    {
+                        "name": "volume-control",
+                        "selector": ".vjs-volume-menu-button"
+                    },
+                    {
+                        "name": "volume-bar",
+                        "selector": ".vjs-volume-bar"
+                    },
+                    {
+                        "name": "volume-level",
+                        "selector": ".vjs-volume-level"
+                    },
+                    {
+                        "name": "volume-level-knob",
+                        "selector": ".vjs-volume-level::before"
+                    },
+                    {
+                        "name": "progress-control",
+                        "selector": ".vjs-progress-control"
+                    },
+                    {
+                        "name": "play-progress",
+                        "selector": ".vjs-play-progress"
+                    },
+                    {
+                        "name": "progress-bar",
+                        "selector": ".vjs-progress-holder"
+                    },
+                    {
+                        "name": "load-progress",
+                        "selector": ".vjs-progress-holder .vjs-load-progress"
+                    },
+                    {
+                        "name": "play-progress-knob",
+                        "selector": ".vjs-play-progress::before"
+                    },
+                    {
+                        "name": "remaining-time",
+                        "selector": ".vjs-remaining-time"
+                    },
+                    {
+                        "name": "fullscreen-control",
+                        "selector": ".vjs-fullscreen-control"
+                    },
+                    {
+                        "name": "restart-control",
+                        "selector": ".vjs-restart-button"
+                    },
+                    {
+                        "name": "endframe",
+                        "selector": "[data-element='video-endframe']"
+                    }
+
+                ],
+                "psuedoStates": [
+                    {
+                        "name": "started",
+                        "selector": ".vjs-started"
+                    },
+                    {
+                        "name": "playing",
+                        "selector": ".vjs-playing"
+                    },
+                    {
+                        "name": "paused",
+                        "selector": ".vjs-paused"
+                    },
+                    {
+                        "name": "ended",
+                        "selector": ".vjs-ended"
+                    },
+                    {
+                        "name": "controls-enabled",
+                        "selector": ".vjs-controls-enabled"
+                    },
+                    {
+                        "name": "simple-controls",
+                        "selector": ".vjs-simple-controls"
+                    },
+                    {
+                        "name": "user-engaged",
+                        "selector": ".vjs-user-active"
+                    },
+                    {
+                        "name": "user-engaged",
+                        "selector": ".vjs-user-active"
+                    },
+                    {
+                        "name": "ready",
+                        "selector": ".vjs-player-ready"
+                    }
+                ],
+                "properties": [
+                    {
+                        "name": "controls-color",
+                        "mixinName": "ad-video-controls-color"
+                    },
+                    {
+                        "name": "control-bar-color",
+                        "mixinName": "ad-video-control-bar-color"
+                    },
+                    {
+                        "name": "controls-accent-color",
+                        "mixinName": "ad-video-controls-accent-color"
+                    }
+                ]
+            },
+            {
+                "name": "video-endframe",
+                "type": "element",
+                "newName": "video-endframe",
+                "tag": "div"
+            },
+            {
+                "name": "video-play",
+                "type": "attribute",
+                "newName": "ad-video-play"
+            },
+            {
+                "name": "video-pause",
+                "type": "attribute",
+                "newName": "ad-video-pause"
+            },
+            {
+                "name": "video-restart",
+                "type": "attribute",
+                "newName": "ad-video-restart"
+            },
+            {
+                "name": "video-unmute",
+                "type": "attribute",
+                "newName": "ad-video-unmute"
+            },
+            {
+                "name": "video-mute",
+                "type": "attribute",
+                "newName": "ad-video-mute"
+            },
+            {
+                "name": "video-play-toggle",
+                "type": "attribute",
+                "newName": "ad-video-play-toggle"
+            },
+            {
+                "name": "video-mute-toggle",
+                "type": "attribute",
+                "newName": "ad-video-mute-toggle"
+            }
+        ]
+    }
+}

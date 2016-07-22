@@ -1,0 +1,53 @@
+{
+    "name": "ad-component",
+    "version": "1.0.0",
+    "specless-cascade-plugin": {
+        "triggers": [
+        	{
+                "name": "component",
+                "type": "element",
+                "tag": "div",
+                "transformScript": "transform.js",
+                "dependencies": {
+                    "css": ["styles.css"],
+                    "js": []
+                },
+                "psuedoElements": [
+                    {
+                        "name": "close-button",
+                        "selector": ".vjs-big-play-button"
+                    },
+                    {
+                        "name": "loading-icon",
+                        "selector": ".vjs-control-bar"
+                    }
+                ]
+            },
+            {
+                "name": "exit",
+                "type": "attribute",
+                "newName": "exit"
+            },
+            {
+                "name": "count",
+                "type": "attribute",
+                "newName": "counter"
+            },
+            {
+                "name": "expand",
+                "type": "attribute",
+                "newName": "expander"
+            },
+            {
+                "name": "close",
+                "type": "attribute",
+                "newName": "closer"
+            },
+            {
+                "name": "third-party-track",
+                "type": "attribute",
+                "newName": "third-party-track"
+            }
+        ]
+    }
+}

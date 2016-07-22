@@ -1,0 +1,28 @@
+{
+    "name": "ad-close-button",
+    "version": "1.0.0",
+    "specless-cascade-plugin": {
+        "triggers": [
+        	{
+                "name": "close-button",
+                "type": "element",
+                "tag": "div",
+                "transformScript": "transform.js",
+                "dependencies": {
+                    "css": ["styles.css"],
+                    "js": []
+                },
+                "properties": [
+                    {
+                        "name": "accent-color",
+                        "mixinName": "ad-close-button-foreground"
+                    },
+                    {
+                        "name": "color",
+                        "mixinName": "ad-close-button-background"
+                    }
+                ]
+            }
+        ]
+    }
+}
