@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>360 Video Wrapper</title>
+    <meta charset="UTF-8">
+    <style>
+    body, html {
+        background-color: transparent;
+        background: none;
+    }
+    body {
+        margin: 0;
+    }
+    .video-js {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .video-js * {
+        display: none;
+    }
+    .video-js canvas {
+        display: block;
+    }
+
+    .video-js .vjs-big-play-button {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        border-radius: 0;
+    }
+
+    .video-js.vjs-has-started .vjs-big-play-button {
+        display: none;
+    }
+    </style>
+</head>
+<body>
+<video id="panoPlayer" class="video-js"></video>
+<script>
+var searchString = document.location.search.replace('?', '').split('&');
+document.getElementById('panoPlayer').setAttribute('src', searchString[0]);
+</script>
+<script src="https://vjs.zencdn.net/5.8.8/video.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r76/three.js"></script>
+<script src="https://c.specless.io/frame/2/scripts/csfplugins_623_ad-video-pano-wrapper"></script>
+</body>
+
+</html>

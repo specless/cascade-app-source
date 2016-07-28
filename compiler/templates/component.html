@@ -1,0 +1,176 @@
+<!--
+  ___    __    ____    ___    __    ____   ____
+ / __)  / _\  / ___)  / __)  / _\  (    \ (  __)
+( (__  /    \ \___ \ ( (__  /    \  ) D (  ) _)
+ \___) \_/\_/ (____/  \___) \_/\_/ (____/ (____)
+
+ R E S P O N S I V E  A D  B O I L E R P L A T E
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cascade Component: {{component}}</title>
+	<link id="cascade-primary-styles" rel="stylesheet" type="text/css" href="{{{css}}}">
+</head>
+<body>
+
+<!-- Begin Component HTML  -->
+{{{ content }}}
+<!-- End Component HTML -->
+
+<script id="speclessContextObject" type="text/javascript">
+this.__contextObject__ = {{{ contextObject }}};
+</script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+
+(function () {
+    var cascadeComponent = "{{component}}";
+    var updateCSSContainer = document.getElementById('cascade-primary-styles');
+    var cssPath = updateCSSContainer.getAttribute("href");
+    var socket = io();
+
+    var reloadPage = function() {
+        var updateCSSTimestamp = +(new Date());
+        var urlParam = "?_dc=" + updateCSSTimestamp;
+        var url = decodeURIComponent(document.location.href);
+        url = url.split("#");
+        url[0] = url[0] + urlParam;
+        url = url.join("#");
+        document.location.href = url
+    }
+
+    var reloadCss = function() {
+        var updateCSSTimestamp = +(new Date());
+        var urlParam = "?_dc=" + updateCSSTimestamp;
+        var newPath = cssPath + urlParam;
+        updateCSSContainer.setAttribute("href", newPath);
+    }
+
+    var reloadAsset = function(path) {
+        var updateCSSTimestamp = +(new Date());
+        var urlParam = "?_dc=" + updateCSSTimestamp;
+        var elementList = document.querySelectorAll('[src]');
+        for (var i = 0; i < elementList.length; i++) { 
+            if (elementList[i].getAttribute('src').indexOf(path) >= 0) {
+                elementList[i].setAttribute('src', path + urlParam);
+                //elementList[i].setAttribute('src', path);
+                //console.log(path);
+            }
+        }
+    }
+
+    socket.on('reconnect', function() {
+        console.info("New project opened.");
+        reloadPage();
+    });
+
+    socket.on('reload', function(project) {
+        console.info("Component reload requested.");
+        setTimeout(function() {
+            reloadPage();
+        }, 650);
+    });
+
+    socket.on('reload-css', function(project) {
+        console.info('CSS reload requested.');
+        reloadCss();
+    });
+
+    socket.on('reload-asset', function(data) {
+        if (data.event === 'add' || data.event === 'change') {
+            var asset = '/assets/' + data.path.split('/assets/').pop();
+            console.info('Asset reload requested (' + asset + ').');
+            reloadAsset(asset);
+        }
+    });
+}());
+
+(function () {
+    var doc = document, lengthString = 'length',
+        parseSearch = function (search) {
+            var parms, temp, items, val, converted, i = 0,
+                dcUriComp = window.decodeURIComponent;
+            if (!search) {
+                search = window.location.search;
+            }
+            items = search.slice(1).split("&");
+            parms = {};
+            for (; i < items[lengthString]; i++) {
+                temp = items[i].split("=");
+                if (temp[0]) {
+                    if (temp[lengthString] < 2) {
+                        temp.push("");
+                    }
+                    val = temp[1];
+                    val = dcUriComp(val);
+                    if (val[0] === '\'' || val[0] === '\"') {
+                        val = val.slice(1, val.length - 1);
+                    }
+                    if (val === 'true') {
+                        val = !0;
+                    }
+                    if (val === 'false') {
+                        val = !1;
+                    }
+                    if (typeof val === 'string') {
+                        converted = +val;
+                        if (converted == val && converted + '' === val) {
+                            val = converted;
+                        }
+                    }
+                    parms[dcUriComp(temp[0])] = val;
+                }
+            }
+            return parms;
+        },
+        make = function () {
+            Specless.makeInner(window, search.overwrites);
+        },
+        getCurrentScript = function (d) {
+            var docu = (d || doc),
+                allScripts = docu.scripts,
+                currentScript = docu.currentScript,
+                lastScript = allScripts[allScripts[lengthString] - 1];
+            return currentScript || lastScript;
+        },
+        search = parseSearch(),
+        fetchTheScripts = function () {
+            var src = search.load,
+                script = document.createElement('script');
+            if (search.baseLoad) {
+                src = search.baseLoad + src;
+            } else {
+                src = 'http://s.specless.io/frame/1/scripts/' + src;
+            }
+            script.src = src;
+            var callback = function () {
+                make();
+                this.parentNode.appendChild(Specless.makeScript(search.userJs));
+            };
+            getCurrentScript().parentNode.appendChild(script);
+            if (typeof script.onload === "undefined") {
+                script.onreadystatechange = function() {
+                    if (this.readyState == "loaded" || this.readyState == "complete") {
+                        this.onreadystatechange = null;
+                        callback.apply(this, arguments);
+                    }
+                };
+            } else {
+                script.onload = callback;
+            }
+        };
+    try {
+        window.Specless = window.parent.Specless;
+    } catch (e) {}
+    if (window.Specless) {
+        make();
+    } else {
+        fetchTheScripts();
+    }
+}());
+</script>
+</body>
+</html>
